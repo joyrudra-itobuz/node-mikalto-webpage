@@ -1,38 +1,42 @@
 export const cardData = [
   {
-    name: "card1",
-    type: "WELLNESS",
-    header: "Dedicated to wellness",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt libero consequatur esse quos? Nesciunt a labore id, neque velit voluptates voluptatum numquam odit ipsa eveniet? Voluptate ipsam esse fugit deserunt",
-    imgSrc:
-      "http://127.0.0.1:5050/images_experience-matters_experiance-matters-1",
+    name: "room-card1",
+    roomType: "Standard Room",
+    roomPrice: "$500",
+    bedType: "King Size",
+    roomSize: "55sq ft",
+    capacity: "2 Adults, 0 Child",
+    roomView: "Garden",
+    imgSrc: "http://127.0.0.1:5050/images_room-category_room-category-img-1",
   },
   {
-    name: "card2",
-    type: "GOODNESS",
-    header: "Dedicated to wellness",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt libero consequatur esse quos? Nesciunt a labore id, neque velit voluptates voluptatum numquam odit ipsa eveniet? Voluptate ipsam esse fugit deserunt",
-    imgSrc:
-      "http://127.0.0.1:5050/images_experience-matters_experiance-matters-2",
+    name: "room-card2",
+    roomType: "Deluxe Room",
+    roomPrice: "$1000",
+    bedType: "King Size",
+    roomSize: "75sq ft",
+    capacity: "2 Adults, 1 Child",
+    roomView: "Farm View",
+    imgSrc: "http://127.0.0.1:5050/images_room-category_room-category-img-2",
   },
   {
-    name: "card3",
-    type: "PROSPOROUSNESS",
-    header: "Dedicated to wellness",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt libero consequatur esse quos? Nesciunt a labore id, neque velit voluptates voluptatum numquam odit ipsa eveniet? Voluptate ipsam esse fugit deserunt",
-    imgSrc:
-      "http://127.0.0.1:5050/images_experience-matters_experiance-matters-3",
+    name: "room-card3",
+    roomType: "Super Deluxe Room",
+    roomPrice: "$2500",
+    bedType: "King Size",
+    roomSize: "85sq ft",
+    capacity: "2 Adults, 2 Child",
+    roomView: "Library",
+    imgSrc: "http://127.0.0.1:5050/images_room-category_room-category-img-13",
   },
   {
     name: "card4",
-    type: "HAPPINESS",
-    header: "Dedicated to wellness",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt libero consequatur esse quos? Nesciunt a labore id, neque velit voluptates voluptatum numquam odit ipsa eveniet? Voluptate ipsam esse fugit deserunt",
-    imgSrc:
-      "http://127.0.0.1:5050/images_experience-matters_experiance-matters-4",
+    roomType: "Luxurios Room",
+    roomPrice: "$5000",
+    bedType: "King Size",
+    roomSize: "155sq ft",
+    capacity: "2 Adults, 0 Child",
+    roomView: "Sea View",
+    imgSrc: "http://127.0.0.1:5050/images_room-category_room-category-img-4",
   },
 ];
