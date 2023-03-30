@@ -7,7 +7,6 @@ const dataPath = path.join("data.txt");
 const data = cardData;
 
 const writeData = async (dataPath) => {
-  //   let data = await getData();
   await fs.writeFile(dataPath, JSON.stringify(data));
   return data;
 };
