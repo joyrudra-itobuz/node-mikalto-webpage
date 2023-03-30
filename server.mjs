@@ -1,12 +1,35 @@
 import * as fs from "fs/promises";
 import * as path from "path";
 import * as http from "http";
-import * as getPath from "./module/getPath.mjs";
+import * as getPath from "./module/get-path.mjs";
 import { parse } from "querystring";
+import { getCardData } from "./module/get-card-data.mjs";
 let chunks = "";
 
+const sendCardData = async (folderName) => {
+  let dataPath = path.resolve();
+
+  dataPath = path.join(dataPath, "database", folderName, "card-data.txt");
+
+  const data = await getCardData(dataPath);
+  return data;
+};
+
 const server = http.createServer(async (req, res) => {
-  if (req.url === "/submit-date") {
+  if (req.url === "/" || req.url === "") {
+    res.write("No routes Defined!");
+    res.end();
+  } else if (req.url === "/get_experience-card_data") {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    const data = await sendCardData("experience-matters-cards-data");
+    res.write(JSON.stringify(data));
+    res.end();
+  } else if (req.url === "/get_room_data") {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    const data = await sendCardData("room-category");
+    res.write(JSON.stringify(data));
+    res.end();
+  } else if (req.url === "/submit-date") {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Headers", "*");
     res.writeHead(200, { "Content-Type": "application/json" });
@@ -27,7 +50,6 @@ const server = http.createServer(async (req, res) => {
     res.write(chunks);
     res.end();
     chunks = "";
-    console.log("Submitting Now");
   } else if (req.url === "/subcribe-data") {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Headers", "*");
@@ -49,8 +71,7 @@ const server = http.createServer(async (req, res) => {
     res.write(chunks);
     res.end();
     chunks = "";
-    console.log("Getting Email Now");
-  } else if (req.url.length !== 0 && req.url.charAt(0) === "/") {
+  } else if (req.url.substring(0, 7) === "/images") {
     const imagePath = getPath.findImage(req.url);
     const imageBuffer = await fs.readFile(imagePath);
     res.setHeader("Content-Type", "image/jpeg");
