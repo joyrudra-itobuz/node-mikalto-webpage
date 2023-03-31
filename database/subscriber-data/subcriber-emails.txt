@@ -1,3 +1,0 @@
-{}{"email":"joy@b.com"}{}{"email":"a@b.com"}
-{}{"email":"a@b.com"}{}{"email":"joy@gmail.com"}
-{}{"email":"swatiguria2001@gmail.com"}{}{"email":"rahul@itobuz.com"}

@@ -41,11 +41,13 @@ const server = http.createServer(async (req, res) => {
       const filePath = path.join(
         "database",
         "booking-dates",
-        "booking-dates.txt"
+        "booking-dates.csv"
       );
-      await fs.appendFile(filePath, JSON.stringify(parsedData), {
-        encoding: "utf8",
-      });
+      if (Object.keys(parsedData).length !== 0) {
+        await fs.appendFile(filePath, JSON.stringify(parsedData), {
+          encoding: "utf8",
+        });
+      }
     });
     res.write(chunks);
     res.end();
@@ -62,11 +64,13 @@ const server = http.createServer(async (req, res) => {
       const filePath = path.join(
         "database",
         "subscriber-data",
-        "subcriber-emails.txt"
+        "subcriber-emails.csv"
       );
-      await fs.appendFile(filePath, JSON.stringify(parsedData), {
-        encoding: "utf8",
-      });
+      if (Object.keys(parsedData).length !== 0) {
+        await fs.appendFile(filePath, JSON.stringify(parsedData), {
+          encoding: "utf8",
+        });
+      }
     });
     res.write(chunks);
     res.end();
