@@ -4,12 +4,14 @@ import * as http from "http";
 import * as getPath from "./module/get-path.mjs";
 import { parse } from "querystring";
 import { getCardData } from "./module/get-card-data.mjs";
+import { getImages, normalizeImageName } from "./module/get-img-data.mjs";
+
+const port = "5050";
+const host = "127.0.0.1";
 
 const sendCardData = async (folderName) => {
   let dataPath = path.resolve();
-
   dataPath = path.join(dataPath, "database", folderName, "card-data.txt");
-
   const data = await getCardData(dataPath);
   return data;
 };
@@ -24,6 +26,7 @@ const getFormData = async (folderName, fileName, req, res) => {
   req.on("data", (chunk) => {
     chunks = chunk.toString();
   });
+
   req.on("end", async () => {
     let parsedData = parse(chunks);
     const filePath = path.join("database", folderName, fileName);
@@ -64,15 +67,29 @@ const server = http.createServer(async (req, res) => {
     const imageBuffer = await fs.readFile(imagePath);
     res.setHeader("Content-Type", "image/jpeg");
     res.end(imageBuffer);
+  } else if (req.url === "/img_room_category") {
+    const imgData = await getImages(
+      path.join(path.resolve(), "database", "images", "room-category")
+    );
+    console.log(imgData);
+    const sendData = [];
+
+    for (let i = 0; i < imgData.length; i++) {
+      let getImgName = normalizeImageName(imgData[i]);
+      sendData[i] = {
+        indexNo: `${i + 1}`,
+        imgSrc: `http://${host}:${port}/images_room-category_${getImgName}`,
+      };
+    }
+    console.log(sendData);
+    res.write(JSON.stringify(sendData));
+    res.end();
   } else {
     res.writeHead(404, { "Content-Type": "text/plain" });
     res.write("Not Found");
     res.end();
   }
 });
-
-const port = "5050";
-const host = "127.0.0.1";
 
 server.listen(port, host, () => {
   console.log(`Server listening on http://${host}:${port}`);
