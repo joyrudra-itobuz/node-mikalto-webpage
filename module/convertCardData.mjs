@@ -1,8 +1,8 @@
 import fs from "fs/promises";
 import path from "path";
-import { cardData } from "./card-data.mjs";
+import { cardData } from "./experience-card-data.mjs";
 
-const dataPath = path.join("data.txt");
+const dataPath = path.join("card-data.txt");
 
 const data = cardData;
 
