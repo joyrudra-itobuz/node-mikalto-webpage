@@ -15,6 +15,29 @@ const sendCardData = async (folderName) => {
   return data;
 };
 
+const getFormData = async (folderName, fileName, req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "*");
+  res.writeHead(200, { "Content-Type": "application/json" });
+
+  req.on("data", (chunk) => {
+    chunks = chunk.toString();
+  });
+  req.on("end", async () => {
+    let parsedData = parse(chunks);
+    const filePath = path.join("database", folderName, fileName);
+    if (Object.keys(parsedData).length !== 0) {
+      await fs.appendFile(filePath, JSON.stringify(parsedData), {
+        encoding: "utf8",
+      });
+    }
+  });
+
+  res.write(chunks);
+  res.end();
+  chunks = "";
+};
+
 const server = http.createServer(async (req, res) => {
   if (req.url === "/" || req.url === "") {
     res.write("No routes Defined!");
@@ -30,51 +53,11 @@ const server = http.createServer(async (req, res) => {
     res.write(JSON.stringify(data));
     res.end();
   } else if (req.url === "/submit-date") {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Headers", "*");
-    res.writeHead(200, { "Content-Type": "application/json" });
-    req.on("data", (chunk) => {
-      chunks = chunk.toString();
-    });
-    req.on("end", async () => {
-      let parsedData = parse(chunks);
-      const filePath = path.join(
-        "database",
-        "booking-dates",
-        "booking-dates.csv"
-      );
-      if (Object.keys(parsedData).length !== 0) {
-        await fs.appendFile(filePath, JSON.stringify(parsedData), {
-          encoding: "utf8",
-        });
-      }
-    });
-    res.write(chunks);
+    getFormData("booking-dates", "booking-dates.csv", req, res);
     res.end();
-    chunks = "";
   } else if (req.url === "/subcribe-data") {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Headers", "*");
-    res.writeHead(200, { "Content-Type": "application/json" });
-    req.on("data", (chunk) => {
-      chunks = chunk.toString();
-    });
-    req.on("end", async () => {
-      let parsedData = parse(chunks);
-      const filePath = path.join(
-        "database",
-        "subscriber-data",
-        "subcriber-emails.csv"
-      );
-      if (Object.keys(parsedData).length !== 0) {
-        await fs.appendFile(filePath, JSON.stringify(parsedData), {
-          encoding: "utf8",
-        });
-      }
-    });
-    res.write(chunks);
+    getFormData("subscriber-data", "subcriber-emails.csv", req, res);
     res.end();
-    chunks = "";
   } else if (req.url.substring(0, 7) === "/images") {
     const imagePath = getPath.findImage(req.url);
     const imageBuffer = await fs.readFile(imagePath);
