@@ -4,7 +4,6 @@ import * as http from "http";
 import * as getPath from "./module/get-path.mjs";
 import { parse } from "querystring";
 import { getCardData } from "./module/get-card-data.mjs";
-let chunks = "";
 
 const sendCardData = async (folderName) => {
   let dataPath = path.resolve();
@@ -19,6 +18,8 @@ const getFormData = async (folderName, fileName, req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers", "*");
   res.writeHead(200, { "Content-Type": "application/json" });
+
+  let chunks = "";
 
   req.on("data", (chunk) => {
     chunks = chunk.toString();
