@@ -84,6 +84,32 @@ const server = http.createServer(async (req, res) => {
     console.log(sendData);
     res.write(JSON.stringify(sendData));
     res.end();
+  } else if (req.url === "/get_bg_images") {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    const dataPath = path.join("database", "bg-image-data", "bg-img-data.txt");
+    const data = await fs.readFile(dataPath, { encoding: "utf8" });
+    res.write(data);
+    res.end();
+  } else if (req.url === "/get_welcome_data") {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    const dataPath = path.join(
+      "database",
+      "welcome-data",
+      "welcome-data copy.txt"
+    );
+    const data = await fs.readFile(dataPath, { encoding: "utf8" });
+    res.write(data);
+    res.end();
+  } else if (req.url === "/get_other_activities_data") {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    const dataPath = path.join(
+      "database",
+      "other-activities",
+      "other-activites-data.txt"
+    );
+    const data = await fs.readFile(dataPath, { encoding: "utf8" });
+    res.write(data);
+    res.end();
   } else {
     res.writeHead(404, { "Content-Type": "text/plain" });
     res.write("Not Found");

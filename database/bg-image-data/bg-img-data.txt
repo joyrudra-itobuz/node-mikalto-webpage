@@ -1,0 +1,1 @@
+[{"name":"hero-bg-img","imgSrc":"http://127.0.0.1:5050/images_hero_hero-bg"},{"name":"say-hello-bg","imgSrc":"http://127.0.0.1:5050/images_say-hello_say-hello-bg"},{"name":"promotion-bg","imgSrc":"http://127.0.0.1:5050/images_promotion_promotion-bg"},{"name":"footer-bg","imgSrc":"http://127.0.0.1:5050/images_footer_footer-bg"}]

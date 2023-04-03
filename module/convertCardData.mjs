@@ -1,10 +1,8 @@
 import fs from "fs/promises";
 import path from "path";
-import { cardData } from "./experience-card-data.mjs";
+import { data } from "./dataset.mjs";
 
-const dataPath = path.join("card-data.txt");
-
-const data = cardData;
+const dataPath = path.join("other-activites-data.txt");
 
 const writeData = async (dataPath) => {
   await fs.writeFile(dataPath, JSON.stringify(data));

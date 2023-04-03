@@ -1,5 +1,4 @@
 import * as path from "path";
-import * as fs from "fs/promises";
 
 export const findImage = (reqUrl) => {
   reqUrl = reqUrl.substring(1, reqUrl.length);

@@ -1,0 +1,1 @@
+[{"name":"promotion-bg","imgSrc":"http://127.0.0.1:5050/images_promotion_promotion-bg"}]
