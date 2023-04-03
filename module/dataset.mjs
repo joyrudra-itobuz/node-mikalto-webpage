@@ -1,19 +1,11 @@
 export const data = [
   {
-    name: "other-activities",
-    subHeading: "OTHER ACTIVITIES",
-    heading:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, quidem.",
+    imgSrc1: "http://127.0.0.1:5050/images_promotion_prmotion-image-1",
+    imgSrc2: "http://127.0.0.1:5050/images_promotion_prmotion-image-2",
+    imgSrc3: "http://127.0.0.1:5050/images_promotion_prmotion-image-3",
+    subHeading: "SPA & WELLNESS",
+    heading: "Side by Side with Nature",
     content:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit sequi natus quia quis error rem ad amet exercitationem consectetur deserunt. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto libero labore nemo dignissimos pariatur fugiat ratione neque rerum cum atque! Maxime distinctio assumenda nihil totam voluptatem esse veritatis libero tempore!",
-    imgSrc: "http://127.0.0.1:5050/images_other-activities_other-activities-1",
-  },
-  {
-    name: "other-activities",
-    subHeading: "OTHER ACTIVITIES",
-    heading:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, quidem.",
-    content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-    imgSrc: "http://127.0.0.1:5050/images_other-activities_other-activities-2",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores quaerat autem distinctio facere ut laudantium sapiente pariatur temporibus, similique quibusdam.",
   },
 ];

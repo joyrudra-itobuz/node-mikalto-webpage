@@ -39,7 +39,6 @@ const getFormData = async (folderName, fileName, req, res) => {
 
   res.write(chunks);
   res.end();
-  chunks = "";
 };
 
 const server = http.createServer(async (req, res) => {
@@ -71,7 +70,7 @@ const server = http.createServer(async (req, res) => {
     const imgData = await getImages(
       path.join(path.resolve(), "database", "images", "room-category")
     );
-    console.log(imgData);
+
     const sendData = [];
 
     for (let i = 0; i < imgData.length; i++) {
@@ -106,6 +105,22 @@ const server = http.createServer(async (req, res) => {
       "database",
       "other-activities",
       "other-activites-data.txt"
+    );
+    const data = await fs.readFile(dataPath, { encoding: "utf8" });
+    res.write(data);
+    res.end();
+  } else if (req.url === "/get_testimonial_data") {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    const dataPath = path.join("database", "testimonials", "review-data.txt");
+    const data = await fs.readFile(dataPath, { encoding: "utf8" });
+    res.write(data);
+    res.end();
+  } else if (req.url === "/get_promotion_data") {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    const dataPath = path.join(
+      "database",
+      "promotion-data",
+      "promotion-data.txt"
     );
     const data = await fs.readFile(dataPath, { encoding: "utf8" });
     res.write(data);
